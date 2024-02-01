@@ -1,19 +1,22 @@
 #!/bin/bash
 
+# 1-fastqc.sh
+# Author: James Boot, Date: 01/02/2024
+# Script for running fastqc on fastq files
 # 1) Adjust queue settings - change job name and email address
 # 2) Set the input directory in SECTION 1
-# 3) Ff multiple input directories - define all and add relevant number of loops
-# 4) Once adjsted copy this script to the project analysis folder and qsub
+# 3) If multiple input directories - define all and add relevant number of loops
+# 4) Copy this script to the project analysis folder and qsub
 
 #####
-#$ -M j.boot@qmul.ac.uk           # Change to your email address 
+#$ -M j.boot@qmul.ac.uk                # Change to your email address 
 #$ -m bes
 #$ -cwd
 #$ -pe smp 1
 #$ -l h_vmem=2G  
 #$ -j y
 #$ -l h_rt=240:00:00
-#$ -N GC-AAA-10836_FastQC             # Change the name of the job accordingly
+#$ -N GC-AAA-10836_FastQC              # Change the name of the job accordingly
 #####
 
 # SECTION 1: Only edit here
