@@ -36,7 +36,7 @@ find ${FASTQDIR} -regex ".*_R1_.*\.fastq.gz"  ! -name "1M-*" | sort >> ${R1FILES
 find ${FASTQDIR} -regex ".*_R2_.*\.fastq.gz"  ! -name "1M-*" | sort >> ${R2FILES}
 
 # Get sample names 
-sed 's:.*/::' R1_files1.txt | sed 's:_.*::' >> ${SAMPLE_NAMES}
+sed 's:.*/::' R1_files2.txt | sed 's:_.*::' >> ${SAMPLE_NAMES}
 
 # Create output folders
 mkdir -p ${FQC_OUTDIR}
