@@ -66,12 +66,13 @@ for i in $(seq ${ITERATIONS}); do
 	echo "Running trim_galore..."
 	
 	# Run trimgalore
-	trim_galore --quality 20 \ # Default
-	--length 20 \ # Default
+    # Options --length, -e, --stringency, --quality are set to default
+	trim_galore --quality 20 \
+	--length 20 \
 	-j ${NSLOTS} \
 	--paired \
-	--stringency 1 \ # Default
-	-e 0.1 \ # Default
+	--stringency 1 \
+	-e 0.1 \
 	--fastqc --fastqc_args "-o ${FQC_OUTDIR} --noextract" \
 	--output_dir ${OUTPUT_DIR} \
 	${R1} ${R2}
