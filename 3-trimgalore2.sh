@@ -13,7 +13,7 @@
 #$ -pe smp 2
 #$ -l h_rt=240:0:0
 #$ -l h_vmem=8G
-#$ -N GC-AAA-10836_TrimGalore								# Change the name of the job accordingly
+#$ -N GC-AAA-10836_TrimGalore2								# Change the name of the job accordingly
 #$ -j y
 #####
 
@@ -21,9 +21,9 @@
 
 ANALYSISDIR=/data/WHRI-GenomeCentre/shares/Projects/NGS_Projects/DNA_Sequencing/Adeniran_Adekunle-Adeyinka/GC-AAA-10836/Analysis
 FASTQDIR=/data/WHRI-GenomeCentre/shares/Projects/NGS_Projects/DNA_Sequencing/Adeniran_Adekunle-Adeyinka/GC-AAA-10836/Data/Saliva_S-LCL_sequencing/MiSeq_run_661_RUN00011-401132587
-R1FILES=${ANALYSISDIR}/R1_files1.txt
-R2FILES=${ANALYSISDIR}/R2_files1.txt
-SAMPLE_NAMES=${ANALYSISDIR}/sample_names1.txt
+R1FILES=${ANALYSISDIR}/R1_files2.txt
+R2FILES=${ANALYSISDIR}/R2_files2.txt
+SAMPLE_NAMES=${ANALYSISDIR}/sample_names2.txt
 OUTPUT_DIR=${ANALYSISDIR}/3.trimgalore_results
 FQC_OUTDIR=${OUTPUT_DIR}/post_trim_fastqc
 
