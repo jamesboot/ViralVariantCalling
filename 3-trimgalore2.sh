@@ -20,7 +20,7 @@
 # SECTION 1: Only edit here
 
 ANALYSISDIR=/data/WHRI-GenomeCentre/shares/Projects/NGS_Projects/DNA_Sequencing/Adeniran_Adekunle-Adeyinka/GC-AAA-10836/Analysis
-FASTQDIR=/data/WHRI-GenomeCentre/shares/Projects/NGS_Projects/DNA_Sequencing/Adeniran_Adekunle-Adeyinka/GC-AAA-10836/Data/Saliva_S-LCL_sequencing/MiSeq_run_661_RUN00011-401132587
+FASTQDIR=/data/WHRI-GenomeCentre/shares/Projects/NGS_Projects/DNA_Sequencing/Adeniran_Adekunle-Adeyinka/GC-AAA-10836/Data/Saliva_S-LCL_sequencing/MiSeq_run_662_RUN00012-401434266
 R1FILES=${ANALYSISDIR}/R1_files2.txt
 R2FILES=${ANALYSISDIR}/R2_files2.txt
 SAMPLE_NAMES=${ANALYSISDIR}/sample_names2.txt
