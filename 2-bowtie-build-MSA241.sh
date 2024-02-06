@@ -19,8 +19,8 @@
 #####
 
 # SECTION 1: Only edit here
-FASTA=/data/WHRI-GenomeCentre/Genome/EBV1/NC_007605.fasta
-OUTDIR=/data/WHRI-GenomeCentre/Genome/EBV1/bowtie2_index
+FASTA=/data/WHRI-GenomeCentre/shares/Projects/NGS_Projects/DNA_Sequencing/Adeniran_Adekunle-Adeyinka/GC-AAA-10836/Data/241_MSA_Cons.fasta
+OUTDIR=/data/WHRI-GenomeCentre/Genome/EBV-241MSA/bowtie2_index
 
 # SECTION 2: Load the module 
 module load bowtie2/2.4.5
