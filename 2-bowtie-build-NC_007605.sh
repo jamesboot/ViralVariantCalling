@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# Script for building bowtie2 reference for alignment
+# 1) Specify the relevant fasta file and output directory in SECTION 1
+# 2) Submit
+
+#####
+#$ -M j.boot@qmul.ac.uk            # Email address
+#$ -m bes                          # Send email
+#$ -cwd
+#$ -pe smp 4                       # Cores
+#$ -l h_vmem=7.5G                   # Memory
+#$ -l h_rt=240:00:00               # Running time
+#$ -N GC-AAA-10836_Index             # Rename this
+#$ -j y
+#####
+
+# SECTION 1: Only edit here
+FASTA=/data/WHRI-GenomeCentre/Genome/EBV1/NC_007605.fasta
+OUTDIR=/data/WHRI-GenomeCentre/Genome/EBV1/bowtie2_index
+
+# SECTION 2: Load the module 
+module load bowtie2/2.4.5
+
+# SECTION 3: Run bowtie2 build
+# Building a small index
+bowtie2-build ${FASTA} ${OUTDIR}
