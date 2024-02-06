@@ -8,13 +8,13 @@
 # 3) Copy this script to the project analysis folder and qsub
 
 #####
-#$ -M j.boot@qmul.ac.uk             # Change to your email address
-#$ -m bes                          
+#$ -M j.boot@qmul.ac.uk            # Email address
+#$ -m bes                          # Send email
 #$ -cwd
-#$ -pe smp 4                       
-#$ -l h_vmem=7.5G                   
-#$ -l h_rt=240:00:00               
-#$ -N GC-AAA-10836_Index             # Change the name of the job accordingly
+#$ -pe smp 4                       # Cores
+#$ -l h_vmem=7.5G                  # Memory
+#$ -l h_rt=240:00:00               # Running time
+#$ -N GC-AAA-10836_Index           # Rename this
 #$ -j y
 #####
 
