@@ -40,7 +40,7 @@ find ${FASTQDIR} -regex ".*_1.fq.gz"  ! -name "1M-*" | sort >> ${R1FILES}
 find ${FASTQDIR} -regex ".*_2.fq.gz"  ! -name "1M-*" | sort >> ${R2FILES}
 
 # Get sample names 
-sed 's:.*/::' R1_files.txt | sed 's:_.*::' >> ${SAMPLE_NAMES}
+sed 's:.*/::' ${R1FILES} | sed 's:_.*::' >> ${SAMPLE_NAMES}
 
 # SECTION 3: Load module
 
