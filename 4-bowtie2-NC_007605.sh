@@ -66,6 +66,6 @@ for i in $(seq ${ITERATIONS}); do
 	echo "Running bowtie2..."
 	
 	# Run bowtie2
-	bowtie2 -x ${GENOME} -1 ${R1} -2 ${R2}
+	bowtie2 -p ${NSLOTS} -x ${GENOME} -1 ${R1} -2 ${R2} -S ${OUTPUT_DIR}/${SAMPLE}.sam
 	
 done
