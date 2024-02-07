@@ -19,7 +19,7 @@
 #####
 
 # SECTION 1: Only edit here
-SAMDIR=/data/WHRI-GenomeCentre/shares/Projects/NGS_Projects/DNA_Sequencing/Adeniran_Adekunle-Adeyinka/GC-AAA-10836/Analysis/4.bowtie2-MSA241_results
+SAMDIR=/data/WHRI-GenomeCentre/shares/Projects/NGS_Projects/DNA_Sequencing/Adeniran_Adekunle-Adeyinka/GC-AAA-10836/Analysis/4.bowtie2-NC7605_results
 SAMFILES=${SAMDIR}/samfiles.txt
 
 # SECTION 2: Load modules
