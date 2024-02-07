@@ -53,5 +53,5 @@ do
 	echo "Running samtools..."
     
     # Run samtools flagstat
-    samtools flagstat ${FILE} -O tsv >> ${SAMPLE}.tsv
+    samtools flagstat ${FILE} -O tsv > ${SAMPLE}.tsv
 done
