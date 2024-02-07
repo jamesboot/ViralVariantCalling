@@ -46,7 +46,7 @@ do
 	echo "FILE: ${FILE}"
 	
     # Define sample and log
-	SAMPLE=$(basename ${FILE})
+	SAMPLE=$(basename -s .sam ${FILE})
 	echo "SAMPLE: ${SAMPLE}"
 	
     # Log
