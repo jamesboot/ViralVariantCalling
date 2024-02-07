@@ -39,7 +39,7 @@ ITERATIONS=$(wc -l < ${SAMFILES})
 for i in $(seq ${ITERATIONS})
 do	
     # Log iteration
-	echo "Iteration ${ITERATIONS}, file names and sample ID:"
+	echo "Iteration ${i}, file names and sample ID:"
 	
     # Define file and log
 	FILE=$(sed -n "${i}p" ${SAMFILES})
