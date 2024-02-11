@@ -1,6 +1,8 @@
 # ViralVariantCalling
 
-## 🚧 Work on going, scripts still being written and added (11/02/2024) 🚧
+README last updated: 11/02/2024
+
+## 🚧 Work on going, scripts still being written and added 🚧
  
 ## :dart: Aim
 - Perform variant analysis of EBV viral sample genomes.
