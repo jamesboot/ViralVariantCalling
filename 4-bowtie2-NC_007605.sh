@@ -21,8 +21,8 @@
 # SECTION 1: Only edit here
 
 ANALYSISDIR=/data/WHRI-GenomeCentre/shares/Projects/NGS_Projects/DNA_Sequencing/Adeniran_Adekunle-Adeyinka/GC-AAA-10836/Analysis
-FASTQDIR=/data/WHRI-GenomeCentre/shares/Projects/NGS_Projects/DNA_Sequencing/Adeniran_Adekunle-Adeyinka/GC-AAA-10836/Analysis/3.trimgalore_results
-OUTPUT_DIR=${ANALYSISDIR}/4.bowtie2-NC7605_results
+FASTQDIR=/data/WHRI-GenomeCentre/shares/Projects/NGS_Projects/DNA_Sequencing/Adeniran_Adekunle-Adeyinka/GC-AAA-10836/Analysis/3.trimgalore_results_hardtrim
+OUTPUT_DIR=${ANALYSISDIR}/4.bowtie2-NC7605-hardtrim_results
 GENOME=/data/WHRI-GenomeCentre/Genome/EBV1/bowtie2_index
 R1FILES=${OUTPUT_DIR}/R1_files.txt
 R2FILES=${OUTPUT_DIR}/R2_files.txt
@@ -34,10 +34,10 @@ SAMPLE_NAMES=${OUTPUT_DIR}/sample_names.txt
 mkdir -p ${OUTPUT_DIR}
 
 # Find read 1's
-find ${FASTQDIR} -regex ".*_1.fq.gz"  ! -name "1M-*" | sort >> ${R1FILES}
+find ${FASTQDIR} -regex ".*_R1_001.150bp_5prime.fq.gz"  ! -name "1M-*" | sort >> ${R1FILES}
 
 # Find read 2's
-find ${FASTQDIR} -regex ".*_2.fq.gz"  ! -name "1M-*" | sort >> ${R2FILES}
+find ${FASTQDIR} -regex ".*_R2_001.150bp_5prime.fq.gz"  ! -name "1M-*" | sort >> ${R2FILES}
 
 # Get sample names 
 sed 's:.*/::' ${R1FILES} | sed 's:_.*::' >> ${SAMPLE_NAMES}
