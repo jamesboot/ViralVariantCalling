@@ -70,7 +70,7 @@ for i in $(seq ${ITERATIONS}); do
 	trim_galore --hardtrim5 150 \
 	-j ${NSLOTS} \
 	--paired \
-	--fastqc --fastqc_args "-o ${FQC_OUTDIR} --noextract" \
+	--fastqc --fastqc_args "-o ${FQC_OUTDIR}" \
 	--output_dir ${OUTPUT_DIR} \
 	${R1} ${R2}
 	
