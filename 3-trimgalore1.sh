@@ -19,12 +19,12 @@
 
 # SECTION 1: Only edit here
 
-ANALYSISDIR=/data/WHRI-GenomeCentre/shares/Projects/NGS_Projects/DNA_Sequencing/Adeniran_Adekunle-Adeyinka/GC-AAA-10836/Analysis
+ANALYSISDIR=/data/WHRI-GenomeCentre/shares/Projects/NGS_Projects/DNA_Sequencing/Adeniran_Adekunle-Adeyinka/GC-AAA-10836/Analysis/v2
 FASTQDIR=/data/WHRI-GenomeCentre/shares/Projects/NGS_Projects/DNA_Sequencing/Adeniran_Adekunle-Adeyinka/GC-AAA-10836/Data/Saliva_S-LCL_sequencing/MiSeq_run_661_RUN00011-401132587
 R1FILES=${ANALYSISDIR}/R1_files1.txt
 R2FILES=${ANALYSISDIR}/R2_files1.txt
 SAMPLE_NAMES=${ANALYSISDIR}/sample_names1.txt
-OUTPUT_DIR=${ANALYSISDIR}/3.trimgalore_results
+OUTPUT_DIR=${ANALYSISDIR}2.trimgalore_results
 FQC_OUTDIR=${OUTPUT_DIR}/post_trim_fastqc
 
 # SECTION 2: Do not edit
