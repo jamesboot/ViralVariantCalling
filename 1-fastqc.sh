@@ -13,7 +13,7 @@
 #$ -m bes
 #$ -cwd
 #$ -pe smp 1
-#$ -l h_vmem=2G  
+#$ -l h_vmem=8G  
 #$ -j y
 #$ -l h_rt=240:00:00
 #$ -N GC-AAA-10836_FastQC              # Change the name of the job accordingly
@@ -23,10 +23,10 @@
 # Set the input directory (where fastq files are located)
 # The out directory (output of fastqc) will be in a folder named fastqc within the input directory
 INDIR1=/data/WHRI-GenomeCentre/shares/Projects/NGS_Projects/DNA_Sequencing/Adeniran_Adekunle-Adeyinka/GC-AAA-10836/Data/Saliva_S-LCL_sequencing/MiSeq_run_661_RUN00011-401132587
-INDIR2=/data/WHRI-GenomeCentre/shares/Projects/NGS_Projects/DNA_Sequencing/Adeniran_Adekunle-Adeyinka/GC-AAA-10836/Data/Saliva_S-LCL_sequencing/MiSeq_run_662_RUN00012-401434266
+INDIR2=/data/WHRI-GenomeCentre/shares/Projects/NGS_Projects/DNA_Sequencing/Adeniran_Adekunle-Adeyinka/GC-AAA-10836/Data/Mems_resequencing
 OUTDIR=/data/WHRI-GenomeCentre/shares/Projects/NGS_Projects/DNA_Sequencing/Adeniran_Adekunle-Adeyinka/GC-AAA-10836/Analysis/1.fastqc
 
-mkdir ${OUTDIR}
+mkdir -p ${OUTDIR}
 
 # SECTION 2: Load module
 module load fastqc
