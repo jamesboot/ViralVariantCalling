@@ -24,7 +24,7 @@ FASTQDIR=/data/WHRI-GenomeCentre/shares/Projects/NGS_Projects/DNA_Sequencing/Ade
 R1FILES=${ANALYSISDIR}/R1_files1.txt
 R2FILES=${ANALYSISDIR}/R2_files1.txt
 SAMPLE_NAMES=${ANALYSISDIR}/sample_names1.txt
-OUTPUT_DIR=${ANALYSISDIR}2.trimgalore_results
+OUTPUT_DIR=${ANALYSISDIR}/2.trimgalore_results
 FQC_OUTDIR=${OUTPUT_DIR}/post_trim_fastqc
 
 # SECTION 2: Do not edit
