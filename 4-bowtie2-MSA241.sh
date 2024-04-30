@@ -14,15 +14,15 @@
 #$ -pe smp 2
 #$ -l h_rt=240:0:0
 #$ -l h_vmem=8G
-#$ -N GC-AAA-10836_Bowtie2-MSA241				# Change the name of the job accordingly
+#$ -N GC-AAA-10836_Bt2-MSA241				# Change the name of the job accordingly
 #$ -j y
 #####
 
 # SECTION 1: Only edit here
 
-ANALYSISDIR=/data/WHRI-GenomeCentre/shares/Projects/NGS_Projects/DNA_Sequencing/Adeniran_Adekunle-Adeyinka/GC-AAA-10836/Analysis
-FASTQDIR=/data/WHRI-GenomeCentre/shares/Projects/NGS_Projects/DNA_Sequencing/Adeniran_Adekunle-Adeyinka/GC-AAA-10836/Analysis/3.trimgalore_results
-OUTPUT_DIR=${ANALYSISDIR}/4.bowtie2-MSA241_results
+ANALYSISDIR=/data/WHRI-GenomeCentre/shares/Projects/NGS_Projects/DNA_Sequencing/Adeniran_Adekunle-Adeyinka/GC-AAA-10836/Analysis/v2
+FASTQDIR=/data/WHRI-GenomeCentre/shares/Projects/NGS_Projects/DNA_Sequencing/Adeniran_Adekunle-Adeyinka/GC-AAA-10836/Analysis/v2/2.trimgalore_results
+OUTPUT_DIR=${ANALYSISDIR}/3.bowtie2-MSA241_results
 GENOME=/data/WHRI-GenomeCentre/Genome/EBV-241MSA/bowtie2_index
 R1FILES=${OUTPUT_DIR}/R1_files.txt
 R2FILES=${OUTPUT_DIR}/R2_files.txt
