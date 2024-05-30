@@ -58,9 +58,15 @@ chromoqc(chrom, dp.alpha=20)
 dev.off()
 
 # Filter and replot
-chrom <- masker(chrom, 
-                     min_QUAL = 1,
-                     min_DP = 300)
+# Remove low coverage 
+# Remove variant with exceptionally high coverage. 
+# These typically come from repetetive regions that have reads which map to multiple locations in the genome.
+chrom <- masker(chrom,
+                min_QUAL = 1,
+                min_DP = 350,
+                max_DP = 6000)
+
+write.vcf(chrom, file="good_variants.vcf.gz", mask=TRUE)
 
 # Process
 chrom <- proc.chromR(chrom, verbose=TRUE)
@@ -86,7 +92,7 @@ dp <- extract.gt(chrom, element="DP", as.numeric=TRUE)
 rownames(dp) <- 1:nrow(dp)
 head(dp)
 
-tiff(filename = 'heatmap.tiff',
+tiff(filename = 'All_heatmap.tiff',
      width = 8,
      height = 8,
      units = 'in',
