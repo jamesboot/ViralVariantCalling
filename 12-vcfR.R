@@ -13,6 +13,11 @@ setwd('/Users/hmy961/Documents/projects/GC-AAA-10836/v2/')
 vcf <- read.vcfR('cohort_variants.vcf')
 vcf[1:4,]
 
+# Get names of samples 
+samples <- colnames(vcf@gt)
+memSamples <- samples[c(1, grep('Mems', samples))]
+nonMemSamples <- samples[-grep('Mems', samples)]
+
 # Box plot of sequencing depth
 dp <- extract.gt(vcf, element='DP', as.numeric=TRUE)
 tiff(filename = 'depth.tiff',
@@ -89,6 +94,59 @@ tiff(filename = 'heatmap.tiff',
 heatmap.bp(dp)
 dev.off()
 
+# Split into mems and non-mems samples
+memsVCF <- vcf[, memSamples]
+nonMemVCF <- vcf[, nonMemSamples]
+
+# Process for mems ----
+
+# Create chromR object
+chromMems <- create.chromR(name='EBV1', vcf=memsVCF, seq=dna, ann=gff)
+
+# Filter and replot
+chromMems <- masker(chromMems, 
+                min_QUAL = 1,
+                min_DP = 300)
+
+# Process
+chromMems <- proc.chromR(chromMems, verbose=TRUE)
+
+dp <- extract.gt(chromMems, element="DP", as.numeric=TRUE)
+rownames(dp) <- 1:nrow(dp)
+head(dp)
+
+tiff(filename = 'Mems_heatmap.tiff',
+     width = 8,
+     height = 8,
+     units = 'in',
+     res = 300)
+heatmap.bp(dp)
+dev.off()
+
+# Process for NON mems ----
+
+# Create chromR object
+chromNONMems <- create.chromR(name='EBV1', vcf=nonMemVCF, seq=dna, ann=gff)
+
+# Filter and replot
+chromNONMems <- masker(chromNONMems, 
+                    min_QUAL = 1,
+                    min_DP = 300)
+
+# Process
+chromNONMems <- proc.chromR(chromNONMems, verbose=TRUE)
+
+dp <- extract.gt(chromNONMems, element="DP", as.numeric=TRUE)
+rownames(dp) <- 1:nrow(dp)
+head(dp)
+
+tiff(filename = 'Non_Mems_heatmap.tiff',
+     width = 8,
+     height = 8,
+     units = 'in',
+     res = 300)
+heatmap.bp(dp)
+dev.off()
 
 
 
