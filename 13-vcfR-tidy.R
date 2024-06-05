@@ -54,9 +54,110 @@ ggplot(allSummary2[allSummary2$Type == 'LCL',],
                dotsize = 0.5) +
   labs(title = 'nVariants by Group in LCL samples')
 
+# Plot all variants in LCL samples
+tileplot <- gtTibble
+tileplot$POS <- as.factor(tileplot$POS)
+tileplot <- tileplot[grep('EBV-Mems', tileplot$Indiv), ]
+tileplot <- tileplot %>%
+  mutate(gt_GT_alleles = replace(gt_GT_alleles, gt_GT_alleles == ".", NA)) %>%
+  mutate(gt_GT_alleles = replace(gt_GT_alleles, nchar(gt_GT_alleles) > 20, 'Large'))
+
+plt <- ggplot(tileplot, aes(x = Indiv, y = POS)) +
+  geom_tile(aes(fill = gt_GT_alleles)) +
+  theme(axis.text.x = element_text(angle = 90),
+        axis.text.y = element_text(size = 2))
+
+ggsave(plt,
+       filename = 'LCL_Variants.tiff',
+       height = 16,
+       width = 8,
+       units = 'in',
+       dpi = 300)
+
+# Plot all variants in Saliva samples
+tileplot <- gtTibble
+tileplot$POS <- as.factor(tileplot$POS)
+tileplot <- tileplot[grep('EBV[0-9]', tileplot$Indiv), ]
+tileplot <- tileplot %>%
+  mutate(gt_GT_alleles = replace(gt_GT_alleles, gt_GT_alleles == ".", NA)) %>%
+  mutate(gt_GT_alleles = replace(gt_GT_alleles, nchar(gt_GT_alleles) > 20, 'Large'))
+
+plt <- ggplot(tileplot, aes(x = Indiv, y = POS)) +
+  geom_tile(aes(fill = gt_GT_alleles)) +
+  theme(axis.text.x = element_text(angle = 90),
+        axis.text.y = element_text(size = 2))
+
+ggsave(plt,
+       filename = 'Saliva_Variants.tiff',
+       height = 16,
+       width = 8,
+       units = 'in',
+       dpi = 300)
+
+# Find variants shared between paired samples ----
+pairs <- list(s034 = c('EBV034', 'EBV-Mems034'),
+              s035 = c('EBV035', 'EBV-Mems035'),
+              s044 = c('EBV044', 'EBV-Mems044'),
+              s048 = c('EBV048', 'EBV-Mems048'),
+              s013 = c('EBV013', 'EBV-Mems013'),
+              s063 = c('EBV063', 'EBV-Mems063'),
+              s005 = c('EBV005', 'EBV-Mems005'))
+
+for (x in names(pairs)) {
+  # Filter down to variants in samples of interest
+  trial <- gtTibble %>%
+    mutate(status = case_when(gt_DP > 0 ~ 1,
+                              .default = 0)) %>%
+    filter(Indiv %in% pairs[[x]] &
+             status == 1)
+  
+  # Identify common variants based on location
+  commonVars <- intersect(trial$POS[trial$Indiv == pairs[[x]][1]],
+                          trial$POS[trial$Indiv == pairs[[x]][2]])
+  
+  # Filter
+  trial <-  trial %>%
+    filter(POS %in% commonVars)
+  
+  # Factorise the position column for plotting
+  trial$POS <- as.factor(trial$POS)
+  
+  # Plot
+  plt <- ggplot(trial, aes(x = Indiv, y = POS)) +
+    geom_tile(aes(fill = gt_GT_alleles))
+  
+  ggsave(plt,
+         filename = paste0(x, '_commonVariants.tiff'),
+         height = 16,
+         width = 8,
+         units = 'in',
+         dpi = 300)
+  
+}
+
 # Filter down to region of interest LMP1 + LMP2
 
 # LMP1 NC_007605.1, ID=gene-HHV4_LMP-1, 166483-169088
+# Plot variants across samples
+tileplot <- gtTibble %>%
+  filter(POS > 166483 & POS < 169088)
+tileplot$POS <- as.factor(tileplot$POS)
+tileplot <- tileplot %>%
+  mutate(gt_GT_alleles = replace(gt_GT_alleles, gt_GT_alleles == ".", NA)) 
+
+plt <- ggplot(tileplot, aes(x = Indiv, y = POS)) +
+  geom_tile(aes(fill = gt_GT_alleles)) +
+  theme(axis.text.x = element_text(angle = 90),
+        axis.text.y = element_text(size = 10))
+
+ggsave(plt,
+       filename = 'LMP1_Variants.tiff',
+       height = 8,
+       width = 8,
+       units = 'in',
+       dpi = 300)
+
+
 # Filter and make a new column with mutation status (0 = ref, 1 = variant)
 lmp1Summary <- gtTibble %>%
   filter(POS > 166483 & POS < 169088) %>%
@@ -89,6 +190,25 @@ ggplot(lmp1Summary[lmp1Summary$Type == 'LCL',],
   labs(title = 'nVariants in LMP1 by Group in LCL samples')
 
 # LMP2 NC_007605.1, ID=gene-HHV4_LMP-2B, 169294	177679
+# Plot variants across samples
+tileplot <- gtTibble %>%
+  filter(POS > 169294 & POS < 177679)
+tileplot$POS <- as.factor(tileplot$POS)
+tileplot <- tileplot %>%
+  mutate(gt_GT_alleles = replace(gt_GT_alleles, gt_GT_alleles == ".", NA)) 
+
+plt <- ggplot(tileplot, aes(x = Indiv, y = POS)) +
+  geom_tile(aes(fill = gt_GT_alleles)) +
+  theme(axis.text.x = element_text(angle = 90),
+        axis.text.y = element_text(size = 10))
+
+ggsave(plt,
+       filename = 'LMP2_Variants.tiff',
+       height = 8,
+       width = 8,
+       units = 'in',
+       dpi = 300)
+
 # Filter and make a new column with mutation status (0 = ref, 1 = variant)
 lmp2Summary <- gtTibble %>%
   filter(POS > 169294 & POS < 177679) %>%
