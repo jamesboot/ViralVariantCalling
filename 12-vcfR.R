@@ -9,6 +9,12 @@ library(vcfR)
 # Set working directory
 setwd('/Users/hmy961/Documents/projects/GC-AAA-10836/v2/')
 
+# Create saving directory
+if (!dir.exists('vcfR_outs')) {
+  dir.create('vcfR_outs')
+}
+save.dir <- 'vcfR_outs'
+
 # Load vcf
 vcf <- read.vcfR('cohort_variants.vcf')
 vcf[1:4,]
@@ -20,7 +26,7 @@ nonMemSamples <- samples[-grep('Mems', samples)]
 
 # Box plot of sequencing depth
 dp <- extract.gt(vcf, element='DP', as.numeric=TRUE)
-tiff(filename = 'depth.tiff',
+tiff(filename = paste0(save.dir, '/depth_bar.tiff'),
      width = 8,
      height = 8,
      units = 'in',
@@ -41,7 +47,7 @@ gff <- read.table('/Users/hmy961/Documents/projects/GC-AAA-10836/fasta/NC76.gff'
 chrom <- create.chromR(name='EBV1', vcf=vcf, seq=dna, ann=gff)
 
 # Initial plot
-tiff(filename = 'qc1.tiff',
+tiff(filename = paste0(save.dir, '/qc1.tiff'),
      width = 8,
      height = 8,
      units = 'in',
@@ -49,7 +55,7 @@ tiff(filename = 'qc1.tiff',
 plot(chrom)
 dev.off()
 
-tiff(filename = 'qc2.tiff',
+tiff(filename = paste0(save.dir, '/qc2.tiff'),
      width = 8,
      height = 8,
      units = 'in',
@@ -70,7 +76,7 @@ write.vcf(chrom, file="good_variants.vcf.gz", mask=TRUE)
 
 # Process
 chrom <- proc.chromR(chrom, verbose=TRUE)
-tiff(filename = 'postFiltQC1.tiff',
+tiff(filename = paste0(save.dir, '/postFiltQC1.tiff'),
      width = 8,
      height = 8,
      units = 'in',
@@ -78,7 +84,7 @@ tiff(filename = 'postFiltQC1.tiff',
 plot(chrom)
 dev.off()
 
-tiff(filename = 'postFiltQC2.tiff',
+tiff(filename = paste0(save.dir, '/postFiltQC2.tiff'),
      width = 8,
      height = 8,
      units = 'in',
@@ -92,67 +98,10 @@ dp <- extract.gt(chrom, element="DP", as.numeric=TRUE)
 rownames(dp) <- 1:nrow(dp)
 head(dp)
 
-tiff(filename = 'All_heatmap.tiff',
+tiff(filename = paste0(save.dir, '/depth_heatmap.tiff'),
      width = 8,
      height = 8,
      units = 'in',
      res = 300)
 heatmap.bp(dp)
 dev.off()
-
-# Split into mems and non-mems samples
-memsVCF <- vcf[, memSamples]
-nonMemVCF <- vcf[, nonMemSamples]
-
-# Process for mems ----
-
-# Create chromR object
-chromMems <- create.chromR(name='EBV1', vcf=memsVCF, seq=dna, ann=gff)
-
-# Filter and replot
-chromMems <- masker(chromMems, 
-                min_QUAL = 1,
-                min_DP = 300)
-
-# Process
-chromMems <- proc.chromR(chromMems, verbose=TRUE)
-
-dp <- extract.gt(chromMems, element="DP", as.numeric=TRUE)
-rownames(dp) <- 1:nrow(dp)
-head(dp)
-
-tiff(filename = 'Mems_heatmap.tiff',
-     width = 8,
-     height = 8,
-     units = 'in',
-     res = 300)
-heatmap.bp(dp)
-dev.off()
-
-# Process for NON mems ----
-
-# Create chromR object
-chromNONMems <- create.chromR(name='EBV1', vcf=nonMemVCF, seq=dna, ann=gff)
-
-# Filter and replot
-chromNONMems <- masker(chromNONMems, 
-                    min_QUAL = 1,
-                    min_DP = 300)
-
-# Process
-chromNONMems <- proc.chromR(chromNONMems, verbose=TRUE)
-
-dp <- extract.gt(chromNONMems, element="DP", as.numeric=TRUE)
-rownames(dp) <- 1:nrow(dp)
-head(dp)
-
-tiff(filename = 'Non_Mems_heatmap.tiff',
-     width = 8,
-     height = 8,
-     units = 'in',
-     res = 300)
-heatmap.bp(dp)
-dev.off()
-
-
-
