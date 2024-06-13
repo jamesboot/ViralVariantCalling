@@ -13,7 +13,7 @@
 #####
 
 # Define file
-FILE=/data/WHRI-GenomeCentre/shares/Projects/NGS_Projects/DNA_Sequencing/McCarthy_Neil/GC-NM-10408/Analysis/Ref_Data_Analysis/v21_genome/3.vcf2phylip/All-Samples.min2.phy
+FILE=/data/WHRI-GenomeCentre/shares/Projects/NGS_Projects/DNA_Sequencing/Adeniran_Adekunle-Adeyinka/GC-AAA-10836/Analysis/v2/5.vcf2phylip/Cohort_NC67.min4.phy
 OUT=raxml-NC76
 
 # Load module
