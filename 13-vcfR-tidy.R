@@ -178,16 +178,28 @@ colnames(tileplot) <- c(
 
 # Add meta data
 tileplot <- merge(tileplot, meta, by = 'Sample')
+tileplot1 <- tileplot[tileplot$Type == 'LCL', ]
+tileplot2 <- tileplot[tileplot$Type == 'Saliva', ]
 
-plt <- ggplot(tileplot, aes(x = Sample, y = POS)) +
+plt <- ggplot(tileplot1, aes(x = Sample, y = POS)) +
   geom_tile(aes(fill = GT_alleles), colour = 'black') +
   theme(axis.text.x = element_text(angle = 90),
         axis.text.y = element_text(size = 10)) +
   facet_grid(. ~ Group, scales = 'free')
-
-
 ggsave(plt,
-       filename = paste0(save.dir, '/LMP1_Variants.tiff'),
+       filename = paste0(save.dir, '/LMP1_Variants_LCL.tiff'),
+       height = 8,
+       width = 8,
+       units = 'in',
+       dpi = 300)
+
+plt <- ggplot(tileplot2, aes(x = Sample, y = POS)) +
+  geom_tile(aes(fill = GT_alleles), colour = 'black') +
+  theme(axis.text.x = element_text(angle = 90),
+        axis.text.y = element_text(size = 10)) +
+  facet_grid(. ~ Group, scales = 'free')
+ggsave(plt,
+       filename = paste0(save.dir, '/LMP1_Variants_Saliva.tiff'),
        height = 8,
        width = 8,
        units = 'in',
