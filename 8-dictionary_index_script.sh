@@ -12,7 +12,7 @@
 #####
 
 # Specify input
-FASTA=/data/WHRI-GenomeCentre/Genome/EBV1/NC_007605.fasta
+FASTA=/data/WHRI-GenomeCentre/Genome/EBV-241MSA/241_MSA_Cons.fasta
 
 ## Load the module gatk
 module load gatk
