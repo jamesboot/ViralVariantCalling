@@ -12,8 +12,8 @@
 #####
 
 # Specify inputs and outputs
-OUTPUT_DIR=/data/WHRI-GenomeCentre/shares/Projects/NGS_Projects/DNA_Sequencing/Adeniran_Adekunle-Adeyinka/GC-AAA-10836/Analysis/v2/4.GATK-NC76
-SAMDIR=/data/WHRI-GenomeCentre/shares/Projects/NGS_Projects/DNA_Sequencing/Adeniran_Adekunle-Adeyinka/GC-AAA-10836/Analysis/v2/3.bowtie2-NC7605_results
+OUTPUT_DIR=/data/WHRI-GenomeCentre/shares/Projects/NGS_Projects/DNA_Sequencing/Adeniran_Adekunle-Adeyinka/GC-AAA-10836/Analysis/v2/4.GATK-MSA241
+SAMDIR=/data/WHRI-GenomeCentre/shares/Projects/NGS_Projects/DNA_Sequencing/Adeniran_Adekunle-Adeyinka/GC-AAA-10836/Analysis/v2/3.bowtie2-MSA241_results
 SAMFILES=${OUTPUT_DIR}/samfiles.txt
 SAMPLE_NAMES=${OUTPUT_DIR}/samples.txt
 
