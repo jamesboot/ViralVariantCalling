@@ -20,11 +20,11 @@ module load gatk
 module load samtools
 
 # Define parameters from parameters file
-FILELIST=/data/WHRI-GenomeCentre/shares/Projects/NGS_Projects/DNA_Sequencing/Adeniran_Adekunle-Adeyinka/GC-AAA-10836/Analysis/v2/4.GATK-NC76/samfiles.txt
-SAMPLELIST=/data/WHRI-GenomeCentre/shares/Projects/NGS_Projects/DNA_Sequencing/Adeniran_Adekunle-Adeyinka/GC-AAA-10836/Analysis/v2/4.GATK-NC76/samples.txt
+FILELIST=/data/WHRI-GenomeCentre/shares/Projects/NGS_Projects/DNA_Sequencing/Adeniran_Adekunle-Adeyinka/GC-AAA-10836/Analysis/v2/4.GATK-MSA241/samfiles.txt
+SAMPLELIST=/data/WHRI-GenomeCentre/shares/Projects/NGS_Projects/DNA_Sequencing/Adeniran_Adekunle-Adeyinka/GC-AAA-10836/Analysis/v2/4.GATK-MSA241/samples.txt
 FILE=$(sed -n "${SGE_TASK_ID}p" ${FILELIST})
 SAMPLE=$(sed -n "${SGE_TASK_ID}p" ${SAMPLELIST})
-GENOME=/data/WHRI-GenomeCentre/Genome/EBV1/NC_007605.fasta
+GENOME=/data/WHRI-GenomeCentre/Genome/EBV-241MSA/241_MSA_Cons.fasta
 
 # Add read groups to SAM file or errors out later
 gatk --java-options "-Xmx4g" AddOrReplaceReadGroups \
