@@ -6,7 +6,6 @@
 #$ -M j.boot@qmul.ac.uk						# Email address
 #$ -m bes									# Send email
 #$ -cwd
-#$ -V
 #$ -pe smp 2								# Cores
 #$ -l h_vmem=8G								# Memory
 #$ -l h_rt=240:00:00						# Running time
