@@ -7,7 +7,7 @@
 library(vcfR)
 
 # Set working directory
-setwd('/Users/hmy961/Documents/projects/GC-AAA-10836/v2/')
+setwd('/Users/hmy961/Documents/projects/GC-AAA-10836/v2/MSA241_variants/')
 
 # Create saving directory
 if (!dir.exists('vcfR_outs')) {
@@ -16,7 +16,7 @@ if (!dir.exists('vcfR_outs')) {
 save.dir <- 'vcfR_outs'
 
 # Load vcf
-vcf <- read.vcfR('cohort_variants.vcf')
+vcf <- read.vcfR('cohort_variants.vcf.gz')
 vcf[1:4,]
 
 # Get names of samples 
@@ -38,14 +38,15 @@ abline(h=seq(0,1e4, by=100), col="#C0C0C088")
 dev.off()
 
 # Load fasta
-dna <- ape::read.dna('/Users/hmy961/Documents/projects/GC-AAA-10836/fasta/NC_007605.fasta', format = "fasta")
+dna <- ape::read.dna('/Users/hmy961/Documents/projects/GC-AAA-10836/fasta/241_MSA_Cons.fasta', format = "fasta")
 
 # Load gff
-gff <- read.table('/Users/hmy961/Documents/projects/GC-AAA-10836/fasta/NC76.gff', sep="\t", quote="")
+#gff <- read.table('/Users/hmy961/Documents/projects/GC-AAA-10836/fasta/', sep="\t", quote="")
 
-# Create chromR object
-chrom <- create.chromR(name='EBV1', vcf=vcf, seq=dna, ann=gff)
-
+# Create chromR object - use different functions depending on whether gff file is present
+#chrom <- create.chromR(name='EBV1', vcf=vcf, seq=dna, ann=gff)
+chrom <- create.chromR(name='EBV1', vcf=vcf, seq=dna)
+  
 # Initial plot
 tiff(filename = paste0(save.dir, '/qc1.tiff'),
      width = 8,
