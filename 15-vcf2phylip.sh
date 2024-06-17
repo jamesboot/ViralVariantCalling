@@ -19,9 +19,9 @@
 # FILE should be the input vcf
 # OUTS should be the output folder (full path)
 # PREFIX should be the prefix required on the output file
-FILE=/data/WHRI-GenomeCentre/shares/Projects/NGS_Projects/DNA_Sequencing/Adeniran_Adekunle-Adeyinka/GC-AAA-10836/Analysis/v2/4.GATK-NC76/cohort_variants.vcf.gz
+FILE=/data/WHRI-GenomeCentre/shares/Projects/NGS_Projects/DNA_Sequencing/Adeniran_Adekunle-Adeyinka/GC-AAA-10836/Analysis/v2/4.GATK-MSA241/cohort_variants.vcf.gz
 OUTS=/data/WHRI-GenomeCentre/shares/Projects/NGS_Projects/DNA_Sequencing/Adeniran_Adekunle-Adeyinka/GC-AAA-10836/Analysis/v2/5.vcf2phylip
-PREFIX=Cohort_NC67
+PREFIX=Cohort_MSA241
 
 # Do not edit
 # Load python
