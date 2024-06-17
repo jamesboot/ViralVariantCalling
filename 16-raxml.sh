@@ -4,12 +4,11 @@
 #$ -M j.boot@qmul.ac.uk				# Email address
 #$ -m bes										# Send email
 #$ -cwd
-#$ -pe smp 8									# Cores
-#$ -l h_vmem=32G							# Memory
+#$ -pe smp 1									# Cores
+#$ -l h_vmem=8G							# Memory
 #$ -l h_rt=240:00:00						# Running time
 #$ -N raxml-btstrp			# Rename this
 #$ -j y
-#$ -l highmem
 #####
 
 # Define file
