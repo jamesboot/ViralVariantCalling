@@ -8,7 +8,7 @@ library(vcfR)
 library(tidyverse)
 
 # Set working directory
-setwd('/Users/hmy961/Documents/projects/GC-AAA-10836/v2/')
+setwd('/Users/hmy961/Documents/projects/GC-AAA-10836/v2/MSA241_variants/')
 
 # Create saving directory
 if (!dir.exists('vcfR-tidy_outs')) {
@@ -18,7 +18,7 @@ save.dir <- 'vcfR-tidy_outs'
 
 # Load meta
 meta <-
-  readxl::read_xlsx('../SNP analysis of Saliva and sLCL geneomes.xlsx',
+  readxl::read_xlsx('../../SNP analysis of Saliva and sLCL geneomes.xlsx',
                     sheet = 'Meta')
 
 # Load vcf
