@@ -12,8 +12,8 @@
 #####
 
 # Define file
-FILE=/data/WHRI-GenomeCentre/shares/Projects/NGS_Projects/DNA_Sequencing/Adeniran_Adekunle-Adeyinka/GC-AAA-10836/Analysis/v2/5.vcf2phylip/Cohort_NC67.min4.phy
-OUT=raxml-NC76
+FILE=/data/WHRI-GenomeCentre/shares/Projects/NGS_Projects/DNA_Sequencing/Adeniran_Adekunle-Adeyinka/GC-AAA-10836/Analysis/v2/5.vcf2phylip/Cohort_MSA241.min4.phy
+OUT=raxml-MSA241
 
 # Load module
 module load raxml
